@@ -115,9 +115,10 @@ class Model extends Module
 
     records = [records] unless isArray(records)
 
-    for record in records
+    for record, i in records
       record.newRecord    = false
       record.id           or= guid()
+      record.index        = i
       @records[record.id] = record
 
     @trigger('refresh', not options.clear and records)
